@@ -8,7 +8,7 @@ So yes, NetMQ is a messaging library and it is fast, but NetMQ has a bit of lear
 
 ## 从哪里开始
 
-ZeroMQ和NetMQ不仅仅是你下载的一个库，看看一些代码示例，就可以的.它背后有一套理念，要用好它你需要理解这套理念.所以最好的起点是 [ZeroMQ guide](http://zguide.zeromq.org/page:all).先阅读ZeroMQ guide，甚至可以读两遍，然后再回到这里.
+ZeroMQ和NetMQ并不是你下载的一个库，看看一些代码示例，就可以的。它背后有一套理念，要用好它你需要理解这套理念.所以最好的起点是 [ZeroMQ guide](http://zguide.zeromq.org/page:all).先阅读ZeroMQ guide，甚至可以读两遍，然后再回到这里.
 
 
 ## ZeroMQ中的 Zero
@@ -30,7 +30,7 @@ More generally, "zero" refers to the culture of minimalism that permeates the pr
 
 ## 第一个例子
 
-So let's start with some code, the "Hello world" example (of course).
+因此，让我们从一些代码开始，做一个“Hello world”示例(当然)。
 
 ### 服务端
 
@@ -50,9 +50,9 @@ using (var server = new ResponseSocket())
 }
 ```
 
-The server creates a socket of type response (you can read more on the [request-response](request-response.md) chapter), binds it to port 5555 and then waits for messages.
+服务器创建一个response类型的套接字 (你可以在 [request-response](request-response.md) 章节读到更多内容), 绑定到端口 5555，然后等待消息。
 
-You can also see that we have zero configuration, we are just sending strings. NetMQ can send much more than strings, but NetMQ doesn't come with any serialization feature and you have to do it by hand, but you will learn some cool tricks for that below ([Multipart messages](#multipart-messages)).
+你也可以看到我们没有配置，我们只是发送字符串。 NetMQ可以发送的远不止字符串, 但是NetMQ没有任何序列化功能，你必须自己手动完成, 但是你将在下面学到一些很酷的技巧([Multipart messages](#multipart-messages)).
 
 ### 客户端
 
@@ -70,11 +70,11 @@ using (var client = new RequestSocket())
 }
 ```
 
-The client create a socket of type request, connect and start sending messages.
+客户端创建一个request类型的套接字，连接并开始发送消息。
 
-Both the `Send` and `Receive` methods are blocking (by default). For the receive it is simple: if there are no messages the method will block. For sending it is more complicated and depends on the socket type. For request sockets, if the high watermark is reached or no peer is connected the method will block.
+ `Send` 和 `Receive` 方法都是阻塞的 (缺省情况下). 对于接收者来说，这很简单: 如果没有消息，该方法将阻塞。 用于发送则更复杂些，并取决于套接字类型。对于request 套接字, 如果达到高水位或没有对端连接，该方法将阻塞。
 
-You can however call `TrySend` and `TryReceive` to avoid the waiting. The operation returns `false` if it would have blocked.
+你可以调用' TrySend '和' TryReceive '来避免等待。如果操作会阻塞，则返回' false '。
 
 ``` csharp
 string message;
