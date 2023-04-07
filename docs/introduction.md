@@ -1,4 +1,4 @@
-Introduction
+简介
 =====
 
 So you are looking for a messaging library, you might have become frustrated with WCF or MSMQ (we know we have been there too) and heard that ZeroMQ is very fast and then you got here, NetMQ, the .NET port of ZeroMQ (also known as ØMQ).
@@ -6,33 +6,33 @@ So you are looking for a messaging library, you might have become frustrated wit
 So yes, NetMQ is a messaging library and it is fast, but NetMQ has a bit of learning curve. Hopefully you will pick it up quickly.
 
 
-## Where to start
+## 从哪里开始
 
-ZeroMQ and NetMQ is not just a library that you download, look at the some code samples and then you are done. There is a philosophy behind it and to make good use of it you have to understand it. So the best place to start is with the [ZeroMQ guide](http://zguide.zeromq.org/page:all). Read it, even twice, and then come back here.
+ZeroMQ和NetMQ不仅仅是你下载的一个库，看看一些代码示例，就可以的.它背后有一套理念，要用好它你需要理解这套理念.所以最好的起点是 [ZeroMQ guide](http://zguide.zeromq.org/page:all).先阅读ZeroMQ guide，甚至可以读两遍，然后再回到这里.
 
 
-## The Zero in ZeroMQ
+## ZeroMQ中的 Zero
 
 The philosophy of ZeroMQ starts with the _zero_. The zero is for zero broker (ZeroMQ is brokerless), zero latency, zero cost (it's free), and zero administration.
 
 More generally, "zero" refers to the culture of minimalism that permeates the project. We add power by removing complexity rather than by exposing new functionality.
 
 
-## Getting the library
+## 获取库
 
-You can get NetMQ library from [NuGet](https://nuget.org/packages/NetMQ/).
-
-
-## Sending and receiving
-
-Since NetMQ is all about the sockets, it is only natural that one would expect to able to send/receive. Since this is such a common area of NetMQ, there is a dedicated documentation page on [receiving and sending](receiving-sending.md).
+你可以从[NuGet](https://nuget.org/packages/NetMQ/)获取 NetMQ 库。
 
 
-## First example
+## 发送和接收
+
+由于NetMQ全都是关于套接字的，人们自然期望能够发送/接收。由于这是NetMQ的一个常见领域，因此有一个关于[发送和接收](receiving-sending.md)的专用文档页面。
+
+
+## 第一个例子
 
 So let's start with some code, the "Hello world" example (of course).
 
-### Server
+### 服务端
 
 ``` csharp
 using (var server = new ResponseSocket())
@@ -54,7 +54,7 @@ The server creates a socket of type response (you can read more on the [request-
 
 You can also see that we have zero configuration, we are just sending strings. NetMQ can send much more than strings, but NetMQ doesn't come with any serialization feature and you have to do it by hand, but you will learn some cool tricks for that below ([Multipart messages](#multipart-messages)).
 
-### Client
+### 客户端
 
 ``` csharp
 using (var client = new RequestSocket())
